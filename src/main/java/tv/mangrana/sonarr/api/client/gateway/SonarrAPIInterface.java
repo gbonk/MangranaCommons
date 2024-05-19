@@ -19,7 +19,12 @@ public interface SonarrAPIInterface extends APIInterface {
     @GET
     @Path("/queue")
     @Produces({ MediaType.APPLICATION_JSON })
-    SonarrQueue getQueue(@QueryParam("apikey") String apikey);
+    SonarrQueue getFirstPageQueue(@QueryParam("apikey") String apikey);
+
+    @GET
+    @Path("/queue")
+    @Produces({ MediaType.APPLICATION_JSON })
+    SonarrQueue getQueue(@QueryParam("apikey") String apikey, @QueryParam("pageSize") int pageSize);
 
     @DELETE
     @Path("/queue/{id}")

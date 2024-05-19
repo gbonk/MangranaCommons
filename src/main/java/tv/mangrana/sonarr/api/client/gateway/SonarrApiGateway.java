@@ -26,8 +26,12 @@ public class SonarrApiGateway {
         logger = new EasyLogger();
     }
 
-    public SonarrQueue getQueue() {
-        return proxy.getQueue(apiKey);
+    public SonarrQueue getSimpleQueue() {
+        return proxy.getFirstPageQueue(apiKey);
+    }
+
+    public SonarrQueue getFullQueue() {
+        return proxy.getQueue(apiKey, 1000);
     }
 
     public void deleteQueueElement(Integer idElement) {
