@@ -75,7 +75,7 @@
         <repository>
             <id>mangrana_repo</id>
             <name>My self-hosted maven repo</name>
-            <url>https://my.repo.loc/snapshots</url>
+            <url>https://mavenrepo.mangrana.tv/snapshots</url>
         </repository>
     </distributionManagement>
 
