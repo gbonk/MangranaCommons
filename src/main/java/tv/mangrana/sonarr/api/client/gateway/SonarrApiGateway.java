@@ -3,6 +3,7 @@ package tv.mangrana.sonarr.api.client.gateway;
 import tv.mangrana.config.CommonConfigFileLoader;
 import tv.mangrana.sonarr.api.schema.command.RefreshSerieCommand;
 import tv.mangrana.sonarr.api.schema.history.SonarrHistory;
+import tv.mangrana.sonarr.api.schema.queue.QueueBulk;
 import tv.mangrana.sonarr.api.schema.queue.SonarrQueue;
 import tv.mangrana.sonarr.api.schema.series.SonarrSerie;
 import tv.mangrana.utils.EasyLogger;
@@ -37,6 +38,11 @@ public class SonarrApiGateway {
     public void deleteQueueElement(Integer idElement) {
         proxy.deleteQueueElement(idElement, false, apiKey);
         log("sent Delete command to Sonarr for the queue element with id "+idElement);
+    }
+
+    public void deleteQueueElements(List<Integer> ids) {
+        proxy.deleteQueueElements(new QueueBulk(ids), apiKey);
+        log("sent Delete command to Sonarr for the queue elements with ids "+ids);
     }
 
     public SonarrSerie getSerieById(Integer seriesId) {

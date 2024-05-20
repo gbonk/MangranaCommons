@@ -2,6 +2,7 @@ package tv.mangrana.sonarr.api.client.gateway;
 
 import tv.mangrana.sonarr.api.schema.command.RefreshSerieCommand;
 import tv.mangrana.sonarr.api.schema.history.SonarrHistory;
+import tv.mangrana.sonarr.api.schema.queue.QueueBulk;
 import tv.mangrana.sonarr.api.schema.queue.SonarrQueue;
 import tv.mangrana.sonarr.api.schema.series.SonarrSerie;
 import tv.mangrana.utils.rest.APIInterface;
@@ -31,6 +32,11 @@ public interface SonarrAPIInterface extends APIInterface {
     @Produces({ MediaType.APPLICATION_JSON })
     void deleteQueueElement(@PathParam("id") Integer idElement, @QueryParam("removeFromClient") boolean removeFromClient,
                             @QueryParam("apikey") String apikey);
+
+    @DELETE
+    @Path("/queue/bulk")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    void deleteQueueElements(QueueBulk ids, @QueryParam("apikey") String apikey);
 
     @GET
     @Path("/series/{id}")
