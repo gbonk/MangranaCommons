@@ -36,7 +36,7 @@ public interface SonarrAPIInterface extends APIInterface {
     @DELETE
     @Path("/queue/bulk")
     @Consumes({ MediaType.APPLICATION_JSON })
-    void deleteQueueElements(QueueBulk ids, @QueryParam("apikey") String apikey);
+    void deleteQueueElements(QueueBulk ids, @QueryParam("removeFromClient") boolean removeTorrents, @QueryParam("apikey") String apikey);
 
     @GET
     @Path("/series/{id}")

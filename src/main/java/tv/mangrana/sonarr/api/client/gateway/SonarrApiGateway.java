@@ -41,7 +41,7 @@ public class SonarrApiGateway {
     }
 
     public void deleteQueueElements(List<Integer> ids) {
-        proxy.deleteQueueElements(new QueueBulk(ids), apiKey);
+        proxy.deleteQueueElements(new QueueBulk(ids), false, apiKey);
         log("sent Delete command to Sonarr for the queue elements with ids "+ids);
     }
 
