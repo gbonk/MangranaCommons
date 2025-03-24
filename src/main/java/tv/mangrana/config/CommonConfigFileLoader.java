@@ -1,10 +1,10 @@
 package tv.mangrana.config;
 
-import tv.mangrana.exception.IncorrectWorkingReferencesException;
-import tv.mangrana.utils.yml.FakeYmlLoader;
-
 import java.io.File;
 import java.util.EnumMap;
+
+import tv.mangrana.exception.IncorrectWorkingReferencesException;
+import tv.mangrana.utils.yml.FakeYmlLoader;
 
 public abstract class CommonConfigFileLoader<P extends Enum<P>> {
 

@@ -1,10 +1,10 @@
 package tv.mangrana.utils;
 
-import tv.mangrana.exception.IncorrectWorkingReferencesException;
-
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import tv.mangrana.exception.IncorrectWorkingReferencesException;
 
 public class StringCaptor {
 
@@ -15,9 +15,9 @@ public class StringCaptor {
     }
 
     public static String getSeasonFolderNameFromSeason(String seasonFolderName) throws IncorrectWorkingReferencesException {
-        Optional<String> typicalFormat = Optional.ofNullable(StringCaptor.getMatchingSubstring(seasonFolderName, "(S\\d{2})"));
+        Optional<String> typicalFormat = Optional.ofNullable(StringCaptor.getMatchingSubstring(seasonFolderName, "([Ss]\\d{2})"));
         if (typicalFormat.isPresent()) {
-            return typicalFormat.get().replaceFirst("S", "Temporada ");
+            return typicalFormat.get().replaceFirst("S", "Season ");
         }
         Optional<String> weirdFormat = Optional.ofNullable(StringCaptor.getMatchingSubstring(seasonFolderName, "(T\\d{1,2})"));
         if (weirdFormat.isPresent()) {
@@ -28,10 +28,10 @@ public class StringCaptor {
 
     public static String getSeasonFolderNameFromEpisode(String episodeFileName) throws IncorrectWorkingReferencesException {
         String episodeInfo = Optional.ofNullable(
-                        StringCaptor.getMatchingSubstring(episodeFileName, "(S\\d{2}E\\d{2})"))
+                        StringCaptor.getMatchingSubstring(episodeFileName, "([Ss]\\d{2}[Ee]\\d{2})"))
                 .orElseThrow(() ->
                         new IncorrectWorkingReferencesException("Couldn't determinate the episode from: "+episodeFileName));
-        return "Temporada ".concat(episodeInfo.substring(1,3));
+        return "Season ".concat(episodeInfo.substring(1,3));
     }
 
     public static int getTMDBFromFile(String path) throws IncorrectWorkingReferencesException {

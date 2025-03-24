@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.annotation.Generated;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -300,16 +302,16 @@ public class Record {
 
     @JsonProperty("outputPath")
     public String getOutputPath() {
-        return outputPath;
+        return outputPath.replace("/mnt/complete", "/Volumes/TEMP");
     }
 
     @JsonProperty("outputPath")
     public void setOutputPath(String outputPath) {
-        this.outputPath = outputPath;
+        this.outputPath = outputPath.replace("/mnt/complete", "/Volumes/TEMP");
     }
 
     public Record withOutputPath(String outputPath) {
-        this.outputPath = outputPath;
+        this.outputPath = outputPath.replace("/mnt/complete", "/Volumes/TEMP");
         return this;
     }
 
